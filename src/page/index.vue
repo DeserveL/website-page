@@ -1,6 +1,5 @@
 <template>
   <div>
-    <myHeader></myHeader>
     <div class="article_list">
       <ul>
         <li v-for="i in list">
@@ -9,15 +8,10 @@
         </li>
       </ul>
     </div>
-    <myFooter></myFooter>
   </div>
 </template>
 <script>
-  import myHeader from '../components/header'
-  import myFooter from '../components/footer'
-
   export default {
-    components: {myHeader, myFooter},
     data () {
       return {
         list: []
@@ -28,9 +22,9 @@
     },
     methods: {
       getData () {
-        this.$api.get('topics', null, r => {
-          this.list = r.data
-        })
+        // this.$api.get('topics', null, r => {
+        //   this.list = r.data
+        // })
       }
     }
   }

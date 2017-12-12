@@ -1,5 +1,5 @@
 // 配置API接口地址
-let root = 'https://cnodejs.org/api/v1'
+let root = '/api'
 // 引用axios
 let axios = require('axios')
 
