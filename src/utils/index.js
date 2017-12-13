@@ -1,3 +1,4 @@
+const ICONS = ['bg-ico-book', 'bg-ico-game', 'bg-ico-note', 'bg-ico-chat', 'bg-ico-code', 'bg-ico-image', 'bg-ico-web', 'bg-ico-link', 'bg-ico-design', 'bg-ico-lock']
 export default {
   goodTime (str) {
     let now = new Date().getTime()
@@ -31,5 +32,9 @@ export default {
       result = '刚刚'
     }
     return result
+  },
+
+  show_icon (cid) {
+    return ICONS[cid % ICONS.length]
   }
 }

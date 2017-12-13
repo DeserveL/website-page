@@ -50,7 +50,7 @@
     },
     methods: {
       getData () {
-        this.$api.get('index/', null, r => {
+        this.$api.get('index/foot/', null, r => {
           this.recentArticles = r.payload.recentArticles
           this.recentComments = r.payload.recentComments
         })
