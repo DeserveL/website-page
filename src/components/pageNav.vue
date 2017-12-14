@@ -1,18 +1,16 @@
 <template>
   <ol id="pageNav" class="page-navigator" >
 
-    <li v-if="pageInfo.hasPreviousPage" class="prev">
-      <router-link :to="'/indexpage/'+ pageInfo.prePage">←</router-link>
+    <li v-if="pageInfo.hasPreviousPage" class="prev" @click="getData(pageInfo.prePage)">
+      <a href="javascript:void(0)">←</a>
     </li>
 
-    <div v-for="navIndex in pageInfo.navigatepageNums">
-      <li :class="pageInfo.pageNum==navIndex ? 'current':'' ">
-        <router-link :to="'/indexpage/' + navIndex">{{navIndex}}</router-link>
-      </li>
-    </div>
+    <li v-for="navIndex in pageInfo.navigatepageNums" :class="pageInfo.pageNum==navIndex ? 'current':'' " @click="getData(navIndex)">
+      <a href="javascript:void(0)">{{navIndex}}</a>
+    </li>
 
-    <li v-if="pageInfo.hasNextPage" class="next">
-      <router-link :to="'/indexpage/'+ pageInfo.nextPage">→</router-link>
+    <li v-if="pageInfo.hasNextPage" class="next" @click="getData(pageInfo.nextPage)">
+      <a href="javascript:void(0)">→</a>
     </li>
 
   </ol>
@@ -20,6 +18,12 @@
 
 <script>
   export default {
-    props: ['pageInfo']
+    props: ['pageInfo'],
+    methods: {
+      getData (page) {
+        // page要传递的参数 - 这里很重要,getPageData就是父组件$on监测的自定义函数不是父组件的自定义函数
+        this.$emit('getPageData', page)
+      }
+    }
   }
 </script>

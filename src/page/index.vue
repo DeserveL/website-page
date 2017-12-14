@@ -4,16 +4,16 @@
       <div class="post-lists-body">
         <div class="post-list-item" v-for="article in pageInfo.list">
           <div class="post-list-item-container">
-            <div class="item-thumb bg-deepgrey" style="background-image:url('static/image/rand/1.jpg');"></div>
-            <a href="">
+            <div class="item-thumb bg-deepgrey" :style="'background-image:url('+ article.thumbImg +');'"></div>
+            <router-link :to="'/article/'+ article.cid">
               <div class="item-desc">
                 <p>{{article.content}}</p>
               </div>
-            </a>
+            </router-link>
             <div class="item-slant reverse-slant bg-deepgrey"></div>
             <div class="item-slant"></div>
             <div class="item-label">
-              <div class="item-title"><a href="${permalink()}">{{article.title}}</a>
+              <div class="item-title"><router-link :to="'/article/'+ article.cid">{{article.title}}</router-link>
               </div>
               <div class="item-meta clearfix">
                 <div :class="'item-meta-ico '+ $utils.show_icon(article.cid)"
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="lists-navigator clearfix">
-      <pageNav :pageInfo="pageInfo"></pageNav>
+      <pageNav :pageInfo="pageInfo" v-on:getPageData="getData"></pageNav>
     </div>
   </div>
 </template>
@@ -38,19 +38,15 @@
     components: {pageNav},
     data () {
       return {
-        page: this.$route.params.page,
-        pageInfo: []
+        pageInfo: {}
       }
     },
     created () {
-      this.getData()
+      this.getData(1)
     },
     methods: {
-      getData () {
-        if (this.page == null) {
-          this.page = 1
-        }
-        this.$api.get('index/', { page: this.page, limit: 12 }, r => {
+      getData (page) {
+        this.$api.get('index/', { page: page, limit: 12 }, r => {
           this.pageInfo = r.payload
         })
       }

@@ -12,11 +12,7 @@ export default new Router({
       name: 'Index',
       component: Index
     }, {
-      path: '/indexpage/:page',
-      name: 'IndexPage',
-      component: Index
-    }, {
-      path: '/article/:id',
+      path: '/article/:cid',
       name: 'Article',
       component: Article
     }

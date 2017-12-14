@@ -2,6 +2,7 @@
   <footer id="footer" class="footer bg-white">
     <div class="footer-social">
       <div class="footer-container clearfix">
+        <social></social>
       </div>
     </div>
     <div class="footer-meta">
@@ -13,7 +14,7 @@
             </a>
             <div class="info-text">
               <p>一生有所追求.</p>
-              <p>Powered by <a href="https://github.com/otale/tale" target="_blank" rel="nofollow">DeserveL</a>
+              <p>Powered by <a href="https://github.com/deservel/website-page" target="_blank" rel="nofollow">DeserveL</a>
               </p>
               <p>&copy; 2017 <a href="https://github.com/deservel">DeserveL</a></p>
             </div>
@@ -38,7 +39,9 @@
   </footer>
 </template>
 <script>
+  import social from './social'
   export default {
+    components: {social},
     data () {
       return {
         recentArticles: [],

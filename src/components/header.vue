@@ -5,7 +5,7 @@
         <img src="static/image/logo.png" alt="ni"/>
       </a>
       <div class="navbar-menu">
-        <router-link to="/indexpage/2">123</router-link>
+        <router-link to="/article/9">123</router-link>
         <a href="1">归档</a>
         <a href="2">友链</a>
         <a href="3">关于</a>
