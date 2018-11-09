@@ -27,22 +27,6 @@
     created () {
       this.getData()
     },
-    computed: {
-      // 文章分类
-      categories () {
-        if (this.article.categories) {
-          return this.article.categories.split(',')
-        }
-        return null
-      },
-      // 文章标签
-      tags () {
-        if (this.article.tags) {
-          return this.article.tags.split(',')
-        }
-        return null
-      }
-    },
     watch: {
       // 检测路由参数变化
       $route () {
