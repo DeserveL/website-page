@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import View404 from '@/page/404'
 import Index from '@/page/index'
 import Article from '@/page/article'
+import Page from '@/page/page'
 
 Vue.use(Router)
 
@@ -18,6 +19,10 @@ const mainRoutes = [
     path: '/article/:cid',
     name: 'Article',
     component: Article
+  }, {
+    path: '/page/:cid',
+    name: 'Page',
+    component: Page
   }
 ]
 

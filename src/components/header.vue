@@ -5,10 +5,9 @@
         <img src="static/image/logo.png" alt="ni"/>
       </a>
       <div class="navbar-menu">
-        <router-link to="/article/9">123</router-link>
-        <a href="1">归档</a>
-        <a href="2">友链</a>
-        <a href="3">关于</a>
+        <router-link to="/page/archives">归档</router-link>
+        <router-link to="/page/links">友链</router-link>
+        <router-link to="/page/about">关于</router-link>
       </div>
       <div class="navbar-search" onclick="">
         <span class="icon-search"></span>
@@ -22,9 +21,9 @@
       <div class="navbar-mobile-menu" onclick="">
         <span class="icon-menu cross"><span class="middle"></span></span>
         <ul>
-          <li><a href="${site_url('/archives')}">归档</a></li>
-          <li><a href="${site_url('/links')}">友链</a></li>
-          <li><a href="${site_url('/about')}">关于</a></li>
+          <li><router-link to="/page/archives">归档</router-link></li>
+          <li><router-link to="/page/links">友链</router-link></li>
+          <li><router-link to="/page/about">关于</router-link></li>
         </ul>
       </div>
     </div>

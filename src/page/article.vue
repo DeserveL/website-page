@@ -6,7 +6,7 @@
           <router-link :to="'/article/'+ article.cid">{{article.title}}</router-link>
         </h1>
         <div class="post-data">
-          <time datetime="${created('yyyy-MM-dd')}" itemprop="datePublished">
+          <time :datetime="$utils.formatDate(article.created, 'yyyy-MM-dd')" itemprop="datePublished">
             发布于 {{$utils.formatDate(article.created,'yyyy-MM-dd')}}
           </time>
           / <a v-if="categories != null" v-for="c in categories" v-bind:href="'/category/' + c">{{c}}</a>
