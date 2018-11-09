@@ -6,19 +6,23 @@ import Article from '@/page/article'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Index',
-      component: Index
-    }, {
-      path: '*',
-      component: View404
-    }, {
-      path: '/article/:cid',
-      name: 'Article',
-      component: Article
-    }
-  ]
+const mainRoutes = [
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  }, {
+    path: '*',
+    component: View404
+  }, {
+    path: '/article/:cid',
+    name: 'Article',
+    component: Article
+  }
+]
+
+const router = new Router({
+  routes: mainRoutes
 })
+
+export default router

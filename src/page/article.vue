@@ -3,19 +3,19 @@
     <article class="main-content page-page" itemscope itemtype="http://schema.org/Article">
       <div class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          <a href="${permalink()}">{{article.title}}</a>
+          <router-link :to="'/article/'+ article.cid">{{article.title}}</router-link>
         </h1>
         <div class="post-data">
           <time datetime="${created('yyyy-MM-dd')}" itemprop="datePublished">
             发布于 {{$utils.formatDate(article.created,'yyyy-MM-dd')}}
           </time>
-          / <a v-if="article.categories && article.categories!=''" v-for="c in article.categories.split(',')" v-bind:href="'/category/' + c">{{c}}</a>
+          / <a v-if="categories != null" v-for="c in categories" v-bind:href="'/category/' + c">{{c}}</a>
           / <a href="#comments">{{article.commentsNum > 0 ? article.commentsNum+ '条评论': '没有评论'}}</a>
           / {{article.hits}}浏览
         </div>
       </div>
       <div id="post-content" class="post-content" itemprop="articleBody">
-        <p class="post-tags"><a v-if="article.tags && article.tags!=''" v-for="t in article.tags.split(',')" v-bind:href="'/tag/' + t">{{t}}</a></p>
+        <p class="post-tags"><a v-if="tags != null" v-for="t in tags" v-bind:href="'/tag/' + t">{{t}}</a></p>
         <article id="article-content" v-html="article.content"></article>
         <p class="post-info">
           本文由 <a href="">{{article.authorId}}</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/"
@@ -34,20 +34,20 @@
         <div class="bottom-bar-items social-share left">
           <span class="bottom-bar-item">Share : </span>
           <span class="bottom-bar-item bottom-bar-facebook"><a
-            href="https://www.facebook.com/sharer/sharer.php?u=${permalink()}" target="_blank" title="${title()}"
+            :href="'https://www.facebook.com/sharer/sharer.php?u=' + getUrl()" target="_blank" :title="article.title"
             rel="nofollow">facebook</a></span>
           <span class="bottom-bar-item bottom-bar-twitter"><a
-            href="https://twitter.com/intent/tweet?url=${permalink()}&text=${title()}" target="_blank"
-            title="${title()}" rel="nofollow">Twitter</a></span>
+            :href="'https://twitter.com/intent/tweet?url=' + getUrl() + '&text=' + article.title" target="_blank"
+            :title="article.title" rel="nofollow">Twitter</a></span>
           <span class="bottom-bar-item bottom-bar-weibo"><a
-            href="http://service.weibo.com/share/share.php?url=${permalink()}&amp;title=${title()}" target="_blank"
-            title="${title()}" rel="nofollow">Weibo</a></span>
+            :href="'http://service.weibo.com/share/share.php?url=' + getUrl() + '&title=' + article.title" target="_blank"
+            :title="article.title" rel="nofollow">Weibo</a></span>
           <span class="bottom-bar-item bottom-bar-qrcode"><a
-            href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=${permalink()}" target="_blank" rel="nofollow">QRcode</a></span>
+            :href="'https://cli.im/api/qrcode/code?text=' + getUrl() + '&mhid=50eWDQu6nc0hMHcrKtNXPKo'" target="_blank" rel="nofollow">QRcode</a></span>
         </div>
         <div class="bottom-bar-items right">
-          <span class="bottom-bar-item">${thePrev('→')}</span>
-          <span class="bottom-bar-item">${theNext('←')}</span>
+          <span class="bottom-bar-item"><router-link v-if="prevArticle != null" :to="'/article/'+ prevArticle.cid" :title="prevArticle.title">→</router-link></span>
+          <span class="bottom-bar-item"><router-link v-if="nextArticle != null" :to="'/article/'+ nextArticle.cid" :title="nextArticle.title">←</router-link></span>
           <span class="bottom-bar-item"><a href="#footer">↓</a></span>
           <span class="bottom-bar-item"><a href="#">↑</a></span>
         </div>
@@ -63,11 +63,38 @@
     data () {
       return {
         cid: this.$route.params.cid,
-        article: {}
+        article: {},
+        nextArticle: {},
+        prevArticle: {}
       }
     },
     created () {
       this.getData()
+    },
+    computed: {
+      // 文章分类
+      categories () {
+        if (this.article.categories) {
+          return this.article.categories.split(',')
+        }
+        return null
+      },
+      // 文章标签
+      tags () {
+        if (this.article.tags) {
+          return this.article.tags.split(',')
+        }
+        return null
+      }
+    },
+    watch: {
+      // 检测路由参数变化
+      $route () {
+        this.cid = this.$route.params.cid
+      },
+      cid () {
+        this.getData()
+      }
     },
     methods: {
       getData () {
@@ -75,8 +102,14 @@
           this.cid = 1
         }
         this.$api.get('article/' + this.cid, null, r => {
-          this.article = r.payload
+          this.article = r.payload.content
+          this.nextArticle = r.payload.nextContent
+          this.prevArticle = r.payload.prevContent
         })
+      },
+      // 获取当前url
+      getUrl () {
+        return window.location.href
       }
     }
   }
