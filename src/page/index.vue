@@ -19,7 +19,7 @@
                 <div :class="'item-meta-ico '+ $utils.show_icon(article.cid)"
                      style="background: url('static/image/bg-ico.png') no-repeat;background-size: 40px auto;"></div>
                 <div class="item-meta-cat">
-                  <a v-for="c in article.categories.split(',')" v-bind:href="'/category/' + c">{{c}}</a>
+                  <router-link v-for="c in article.categories.split(',')" :key="c" :to="'/category/' + c">{{c}}</router-link>
                 </div>
               </div>
             </div>

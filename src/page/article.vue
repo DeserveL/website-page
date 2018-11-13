@@ -9,16 +9,16 @@
           <time :datetime="$utils.formatDate(article.created, 'yyyy-MM-dd')" itemprop="datePublished">
             发布于 {{$utils.formatDate(article.created,'yyyy-MM-dd')}}
           </time>
-          / <a v-if="categories != null" v-for="c in categories" v-bind:href="'/category/' + c">{{c}}</a>
+          / <router-link v-if="categories != null" v-for="c in categories" :key="c" :to="'/category/' + c">{{c}}</router-link>
           / <a href="#comments">{{article.commentsNum > 0 ? article.commentsNum+ '条评论': '没有评论'}}</a>
           / {{article.hits}}浏览
         </div>
       </div>
       <div id="post-content" class="post-content" itemprop="articleBody">
-        <p class="post-tags"><a v-if="tags != null" v-for="t in tags" v-bind:href="'/tag/' + t">{{t}}</a></p>
+        <p class="post-tags"><router-link v-if="tags != null" v-for="t in tags" :key="t" :to="'/tag/' + t">{{t}}</router-link></p>
         <article id="article-content" v-html="article.content"></article>
         <p class="post-info">
-          本文由 <a href="">{{article.authorId}}</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/"
+          本文由 <a href="">DeserveL</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/"
                                                            target="_blank"
                                                            rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:
           {{$utils.formatDate(article.modified,'yyyy-MM-dd hh:mm')}}
