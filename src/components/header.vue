@@ -5,23 +5,23 @@
         <img src="static/image/logo.png" alt="ni"/>
       </a>
       <div class="navbar-menu">
-        <router-link to="/page/archives">归档</router-link>
+        <router-link to="/archives">归档</router-link>
         <router-link to="/page/links">友链</router-link>
         <router-link to="/page/about">关于</router-link>
       </div>
       <div class="navbar-search" onclick="">
-        <span class="icon-search"></span>
+        <span class="icon-search" @click="search"></span>
         <form role="search" onsubmit="return false;">
-                <span class="search-box">
-                    <input type="text" id="search-inp" class="input" placeholder="搜索..." maxlength="30"
-                           autocomplete="off">
-                </span>
+            <span class="search-box">
+                <input type="text" id="search-inp" class="input" placeholder="搜索..." maxlength="30" @keyup.enter="search" v-model="keyword"
+                       autocomplete="off">
+            </span>
         </form>
       </div>
       <div class="navbar-mobile-menu" onclick="">
         <span class="icon-menu cross"><span class="middle"></span></span>
         <ul>
-          <li><router-link to="/page/archives">归档</router-link></li>
+          <li><router-link to="/archives">归档</router-link></li>
           <li><router-link to="/page/links">友链</router-link></li>
           <li><router-link to="/page/about">关于</router-link></li>
         </ul>
@@ -31,14 +31,18 @@
 </template>
 <script>
   export default {
+    data () {
+      return {
+        keyword: ''
+      }
+    },
     created () {
-      this.getData()
     },
     methods: {
-      getData () {
-        // this.$api.get('topics', null, r => {
-        //   console.log(r)
-        // })
+      search () {
+        if (this.keyword !== '') {
+          this.$router.push({path: '/search/' + this.keyword})
+        }
       }
     }
   }

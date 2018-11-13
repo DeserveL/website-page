@@ -9,17 +9,22 @@
   export default {
     data () {
       return {
-        time: 5
+        time: 5,
+        _Interval: null
       }
     },
     created () {
       this.data()
     },
+    destroyed () {
+      // 清除定时器
+      clearInterval(this._Interval)
+    },
     methods: {
       data () {
-        const t = setInterval(() => {
+        this._Interval = setInterval(() => {
           if (this.time <= 0) {
-            clearInterval(t)
+            clearInterval(this._Interval)
             this.$router.push({ name: 'Index' })
             return
           }

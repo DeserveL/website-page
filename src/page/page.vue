@@ -43,6 +43,9 @@
         }
         this.$api.get('article/' + this.cid, null, r => {
           this.article = r.payload.content
+        }, e => {
+          console.log(e)
+          this.$router.push({path: '/error'})
         })
       }
     }

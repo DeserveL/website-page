@@ -5,6 +5,8 @@ import Index from '@/page/index'
 import Article from '@/page/article'
 import Page from '@/page/page'
 import PageCategory from '@/page/page-category'
+import Categories from '@/page/categories'
+import Archives from '@/page/archives'
 
 Vue.use(Router)
 
@@ -14,9 +16,6 @@ const mainRoutes = [
     name: 'Index',
     component: Index
   }, {
-    path: '*',
-    component: View404
-  }, {
     path: '/article/:cid',
     name: 'Article',
     component: Article
@@ -25,6 +24,14 @@ const mainRoutes = [
     name: 'Page',
     component: Page
   }, {
+    path: '/categories',
+    name: 'Categories',
+    component: Categories
+  }, {
+    path: '/tags',
+    name: 'Tags',
+    component: Categories
+  }, {
     path: '/category/:keyword',
     name: 'PageCategory',
     component: PageCategory
@@ -32,6 +39,18 @@ const mainRoutes = [
     path: '/tag/:keyword',
     name: 'PageTag',
     component: PageCategory
+  }, {
+    path: '/search/:keyword',
+    name: 'PageSearch',
+    component: PageCategory
+  }, {
+    path: '/archives',
+    name: 'Archives',
+    component: Archives
+  }, {
+    path: '*',
+    name: 'View404',
+    component: View404
   }
 ]
 

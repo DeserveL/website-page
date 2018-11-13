@@ -1,13 +1,10 @@
 <template>
   <div class="main-content common-page clearfix">
     <div class="categorys-item">
-      <div class="common-title" v-if="type === 'category'">
-        分类：{{keyword}}
+      <div class="common-title">
+        {{types[type]}}：{{keyword}}
       </div>
-      <div class="common-title" v-else-if="type === 'tag'">
-        标签：{{keyword}}
-      </div>
-      <div v-if="meta == null || articles.size < 1">
+      <div v-if="!articles || articles.total < 1">
         <p>抱歉，还没有相关文章.</p>
       </div>
       <div class="post-lists" v-else>
@@ -30,6 +27,11 @@
           </div>
         </div>
       </div>
+      <!--大类-->
+      <div class="common-title">
+        <router-link v-if="type === 'category'" to="/categories">查看所有分类</router-link>
+        <router-link v-if="type === 'tag'" to="/tags">查看所有标签</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +41,7 @@
       return {
         keyword: this.$route.params.keyword,
         type: this.$route.path.split('/')[1],
+        types: {'category': '分类', 'tag': '标签', 'search': '搜索'},
         meta: null,
         articles: {}
       }
@@ -50,6 +53,7 @@
       // 检测路由参数变化
       $route () {
         this.keyword = this.$route.params.keyword
+        this.type = this.$route.path.split('/')[1]
       },
       keyword () {
         this.getData()
@@ -57,14 +61,9 @@
     },
     methods: {
       getData () {
-        if (this.keyword == null) {
-          this.keyword = '默认分类'
-        }
         this.$api.get(this.type + '/' + this.keyword, {limit: 999}, r => {
           this.meta = r.payload.meta
-          if (this.meta != null) {
-            this.articles = r.payload.articles
-          }
+          this.articles = r.payload.articles
         })
       }
     }
