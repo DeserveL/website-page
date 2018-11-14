@@ -24,14 +24,14 @@
         <div class="meta-item meta-posts">
           <h3 class="meta-title">最新文章</h3>
           <li v-for="article in recentArticles">
-            <a href="">{{article.title}}</a>
+            <router-link :to="'/article/' + article.cid">{{article.title}}</router-link>
           </li>
         </div>
 
         <div class="meta-item meta-comments">
           <h3 class="meta-title">最新评论</h3>
           <li v-for="comm in recentComments">
-            <a href="">{{comm.author}}:{{comm.content}}</a>
+            <router-link :to="'/article/' + comm.cid + '#comments'">{{comm.author}}:{{comm.content}}</router-link>
           </li>
         </div>
       </div>
