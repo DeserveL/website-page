@@ -5,7 +5,6 @@
     <myFooter></myFooter>
   </div>
 </template>
-
 <script>
   import myHeader from './components/header.vue'
   import myFooter from './components/footer.vue'
@@ -17,4 +16,6 @@
 
 <style lang="scss">
   @import "./style/style";
+  @import '../static/css/xcode.min.css';
+  @import '../static/css/style.min.css';
 </style>

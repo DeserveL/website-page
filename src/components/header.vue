@@ -1,9 +1,9 @@
 <template>
   <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="" class="navbar-logo">
-        <img src="static/image/logo.png" alt="ni"/>
-      </a>
+      <router-link to="/" class="navbar-logo">
+        <img src="/static/image/logo.png" alt="ni"/>
+      </router-link>
       <div class="navbar-menu">
         <router-link to="/archives">归档</router-link>
         <router-link to="/page/links">友链</router-link>

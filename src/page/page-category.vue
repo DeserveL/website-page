@@ -19,7 +19,7 @@
                 </div>
                 <div class="item-meta clearfix">
                   <div :class="'item-meta-ico '+ $utils.show_icon(article.cid)"
-                       style="background: url('static/image/bg-ico.png') no-repeat;background-size: 40px auto;"></div>
+                       style="background: url('/static/image/bg-ico.png') no-repeat;background-size: 40px auto;"></div>
                   <div class="item-meta-date">发布于 {{$utils.formatDate(article.created,'yyyy-MM-dd')}}</div>
                 </div>
               </div>

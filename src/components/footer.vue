@@ -10,7 +10,7 @@
         <div class="meta-item meta-copyright">
           <div class="meta-copyright-info">
             <a href="" class="info-logo">
-              <img src="static/image/logo.png" alt="">
+              <img src="/static/image/logo.png" alt="">
             </a>
             <div class="info-text">
               <p>一生有所追求.</p>
