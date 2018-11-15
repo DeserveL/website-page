@@ -149,7 +149,6 @@
         document.documentElement.scrollTop = document.getElementById('comment-form').offsetTop - 100
       },
       goAnchor (anchor) {
-        console.log(document.getElementById(anchor).offsetTop)
         document.documentElement.scrollTop = document.getElementById(anchor).offsetTop - 100
       },
       /** 注销 --删除cookie **/

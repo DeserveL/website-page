@@ -14,15 +14,21 @@
         <article id="article-content" v-html="article.content"></article>
       </div>
     </article>
+    <!-- 文章评论-->
+    <article-comment :article="article"></article-comment>
   </div>
 </template>
 <script>
+  import articleComment from '../components/comments.vue'
   export default {
     data () {
       return {
         cid: this.$route.params.cid,
         article: {}
       }
+    },
+    components: {
+      articleComment
     },
     created () {
       this.getData()
