@@ -28,6 +28,10 @@
     <!--文章目录start-->
     <articleDirectory></articleDirectory>
     <!--文章目录end-->
+
+    <!-- 文章评论-->
+    <article-comment :article="article"></article-comment>
+
     <!--最底部分享栏目start-->
     <div id="post-bottom-bar" class="post-bottom-bar">
       <div class="bottom-bar-inner">
@@ -58,8 +62,12 @@
 </template>
 <script>
   import articleDirectory from '../components/directory'
+  import articleComment from '../components/comments.vue'
   export default {
-    components: {articleDirectory},
+    components: {
+      articleDirectory,
+      articleComment
+    },
     data () {
       return {
         cid: this.$route.params.cid,

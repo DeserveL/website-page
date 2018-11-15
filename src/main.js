@@ -2,11 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueCookie from 'vue-cookie'            // api: https://github.com/alfhen/vue-cookie
 import router from './router'
 // 引用API文件 基于Axios
 import api from './api'
 // 引用工具文件
 import utils from './utils'
+
+Vue.use(VueCookie)
 
 Vue.config.productionTip = false
 // 将API方法绑定到全局
