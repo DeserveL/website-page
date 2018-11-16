@@ -30,13 +30,27 @@
   </header>
 </template>
 <script>
+  // 隐藏和展示页面元素
+  import Headroom from '../../static/js/headroom.min.js'
+
   export default {
     data () {
       return {
         keyword: ''
       }
     },
-    created () {
+    mounted () {
+      // 头部随滚动条动而隐藏展开
+      let header = new Headroom(document.getElementById('header'), {
+        tolerance: 10,
+        offset: 80,
+        classes: {
+          initial: 'animated',
+          pinned: 'slideDown',
+          unpinned: 'slideUp'
+        }
+      })
+      header.init()
     },
     methods: {
       search () {

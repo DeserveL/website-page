@@ -62,7 +62,6 @@ const router = new Router({
     // 如果你的連結是帶 # 這種
     // to.hash 就會有值(值就是連結)
     // 例如 #3
-    console.log('to', to)
     if (to.hash) {
       return {
         // 這個是透過 to.hash 的值來找到對應的元素
