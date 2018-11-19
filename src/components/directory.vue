@@ -101,6 +101,7 @@
             }
             directory.appendChild(root)
           }
+          document.getElementById('directory').innerHTML = ''
           createPostDirectory(document.getElementById('article-content'), document.getElementById('directory'), true)
         }
       }

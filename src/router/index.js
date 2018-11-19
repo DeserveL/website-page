@@ -70,6 +70,8 @@ const router = new Router({
         selector: to.hash
       }
     }
+    // 动态路由间切换时，如何让页面回到顶部
+    return { x: 0, y: 0 }
   }
 })
 
