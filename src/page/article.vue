@@ -26,7 +26,7 @@
       </div>
     </article>
     <!--文章目录start-->
-    <articleDirectory></articleDirectory>
+    <articleDirectory ref="articleDirectory"></articleDirectory>
     <!--文章目录end-->
 
     <!-- 文章评论-->
@@ -113,6 +113,9 @@
           this.article = r.payload.content
           this.nextArticle = r.payload.nextContent
           this.prevArticle = r.payload.prevContent
+          this.$nextTick(function () {
+            this.$refs.articleDirectory.postDirectoryBuild()
+          })
         })
       },
       // 获取当前url
