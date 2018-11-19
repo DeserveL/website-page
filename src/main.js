@@ -8,6 +8,8 @@ import router from './router'
 import api from './api'
 // 引用工具文件
 import utils from './utils'
+// 代码高亮
+import hljs from '../static/js/highlight.min.js'
 
 Vue.use(VueCookie)
 
@@ -16,6 +18,14 @@ Vue.config.productionTip = false
 Vue.prototype.$api = api
 // 将工具方法绑定到全局
 Vue.prototype.$utils = utils
+
+// 在main.js定义自定义代码高亮指令指令，使用v-highlight
+Vue.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
 
 /* eslint-disable no-new */
 new Vue({

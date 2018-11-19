@@ -16,7 +16,7 @@
       </div>
       <div id="post-content" class="post-content" itemprop="articleBody">
         <p class="post-tags"><router-link v-if="tags != null" v-for="t in tags" :key="t" :to="'/tag/' + t">{{t}}</router-link></p>
-        <article id="article-content" v-html="article.content"></article>
+        <article id="article-content" v-html="article.content" v-highlight></article>
         <p class="post-info">
           本文由 <a href="">DeserveL</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/"
                                                            target="_blank"

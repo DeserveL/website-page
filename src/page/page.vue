@@ -11,7 +11,7 @@
         </div>
       </div>
       <div id="post-content" class="post-content">
-        <article id="article-content" v-html="article.content"></article>
+        <article id="article-content" v-html="article.content" v-highlight></article>
       </div>
     </article>
     <!-- 文章评论-->
