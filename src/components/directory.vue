@@ -8,12 +8,6 @@
   /* eslint-disable */
   export default {
       name: 'directory',
-      created () {
-        // 在下次 DOM 更新循环结束之后执行延迟回调
-        this.$nextTick(function () {
-          this.postDirectoryBuild()
-        })
-      },
       methods: {
         postDirectoryBuild () {
           var postChildren = function children (childNodes, reg) {
