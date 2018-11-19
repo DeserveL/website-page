@@ -5,6 +5,7 @@
         <img src="/static/image/logo.png" alt="ni"/>
       </router-link>
       <div class="navbar-menu">
+        <router-link to="/category/摄影">摄影</router-link>
         <router-link to="/archives">归档</router-link>
         <router-link to="/page/links">友链</router-link>
         <router-link to="/page/about">关于</router-link>
@@ -21,6 +22,7 @@
       <div class="navbar-mobile-menu" onclick="">
         <span class="icon-menu cross"><span class="middle"></span></span>
         <ul>
+          <li><router-link to="/category/摄影">摄影</router-link></li>
           <li><router-link to="/archives">归档</router-link></li>
           <li><router-link to="/page/links">友链</router-link></li>
           <li><router-link to="/page/about">关于</router-link></li>
