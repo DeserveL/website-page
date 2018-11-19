@@ -14,9 +14,9 @@
             </a>
             <div class="info-text">
               <p>一生有所追求.</p>
-              <p>Powered by <a href="https://github.com/deservel/website-page" target="_blank" rel="nofollow">DeserveL</a>
+              <p>&copy; 2018 Powered by <a href="https://github.com/deservel" target="_blank" rel="nofollow">DeserveL</a>
               </p>
-              <p>&copy; 2017 <a href="https://github.com/deservel">DeserveL</a></p>
+              <p><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow">鄂ICP备17026132号-1</a></p>
             </div>
           </div>
         </div>
